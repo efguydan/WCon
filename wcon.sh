@@ -1,5 +1,13 @@
 #!/bin/bash
 
+#Trying to check if mac is connected to wifi
+macIP=$(ifconfig | grep "inet " | grep -v 127.0.0.1 | cut -d\  -f2)
+if [ -z "${macIP// }" ]; then 
+	echo "Your mac doesn't have a wifi connection"
+	echo "Exiting!!"
+	exit;
+fi
+
 #Getting devices just to make sure we have a device connected
 devices=$(adb devices)
 
@@ -13,13 +21,15 @@ elif [ ${#devices} -gt 40 ]; then
 	exit;
 fi
 
-echo "$devices"
+phoneID=$(adb devices | grep -o '\b[a-f0-9]\+\b')
+phoneName=$(adb -s ${phoneID} shell getprop ro.product.model)
+echo "Your device is $phoneName"
 
 #Trying to restart adb to port 5555
 adb tcpip 5555
 
 #Get the ip of the connected device
-echo "Getting IP address of connected device"
+echo "Getting IP address of $phoneName"
 
 #Delay for some time
 sleep 3s
@@ -31,11 +41,17 @@ if [ ${#phoneIP} -gt 30 ]; then
 	echo "Exiting!!"
 	exit;
 elif [ ${#phoneIP} -gt 10 ]; then
-	echo "The device ip is ${phoneIP}"
+	echo "${phoneIP}"
+	echo ""
 elif [ -z "${phoneIP// }" ]; then
 	echo "Deice doesn't have a wifi connection"
 	echo "Exiting!!"
 	exit;
 fi
 
-adb connect "${phoneIP}:5555"
+output=$(adb connect "${phoneIP}:5555")
+if [[ "$output" == "connected to ${phoneIP}:5555" ]]; then
+    echo "conected to $phoneName"
+else
+    echo "$output"
+fi
