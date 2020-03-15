@@ -12,7 +12,7 @@ fi
 phoneID=$(adb get-serialno)
 
 if [ -z "${phoneID// }" ]; then
-	echo "No devices attached"
+	echo "No/Multiple devices attached"
 	echo "Exiting!!"
 	exit;
 fi
