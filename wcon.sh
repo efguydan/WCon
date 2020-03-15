@@ -9,19 +9,15 @@ if [ -z "${macIP// }" ]; then
 fi
 
 #Getting devices just to make sure we have a device connected
-devices=$(adb devices)
+phoneID=$(adb get-serialno)
 
-if [ ${#devices} -lt 25 ]; then 
+if [ -z "${phoneID// }" ]; then
 	echo "No devices attached"
-	echo "Exiting!!"
-	exit;
-elif [ ${#devices} -gt 40 ]; then
-	echo "More than one devices found"
 	echo "Exiting!!"
 	exit;
 fi
 
-phoneID=$(adb devices | grep -o '\b[a-f0-9]\+\b')
+#Get model name of connected device
 phoneName=$(adb -s ${phoneID} shell getprop ro.product.model)
 echo "Your device is $phoneName"
 
@@ -44,14 +40,15 @@ elif [ ${#phoneIP} -gt 10 ]; then
 	echo "${phoneIP}"
 	echo ""
 elif [ -z "${phoneIP// }" ]; then
-	echo "Deice doesn't have a wifi connection"
+	echo "Device doesn't have a wifi connection"
 	echo "Exiting!!"
 	exit;
 fi
 
 output=$(adb connect "${phoneIP}:5555")
-if [[ "$output" == "connected to ${phoneIP}:5555" ]]; then
-    echo "conected to $phoneName"
+if [[ "$output" = "connected to ${phoneIP}:5555" ]]; then
+    echo "connected to $phoneName"
+    echo "You can remove your device"
 else
     echo "$output"
 fi
