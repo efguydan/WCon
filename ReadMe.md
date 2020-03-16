@@ -1,7 +1,6 @@
 ## wCon
-🏋️👷👷👷 WORK IN PROGRESS 👷👷👷🏋️
 
-wCon, which can be seen as short for wireless connect is a bash script that can be used to connect an android device wirelessly to a mac.
+wCon, which is short for Wireless Connect, is a bash script that can be used to connect an android device wirelessly to a mac.
 
 ## Setup
 ### Step 1: 
@@ -19,7 +18,7 @@ chmod u+x wcon.sh
 ```
 
 ### Step 3 (and Subsequent Times): 
-You are setup then. Whenever you want to connect your device to your mac, connect with a cable and run the command:
+You are done with setup. Whenever you want to connect your device to your mac, connect with a cable and run the command:
 
 ```bash
 ./wcon.sh

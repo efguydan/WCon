@@ -1,4 +1,5 @@
 #!/bin/bash
+#v1.0.0
 
 #Trying to check if mac is connected to wifi
 macIP=$(ifconfig | grep "inet " | grep -v 127.0.0.1 | cut -d\  -f2)
