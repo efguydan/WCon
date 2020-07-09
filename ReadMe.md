@@ -22,7 +22,7 @@ chmod u+x wcon.sh
 ```
 
 ### Step 3 (and Subsequent Times): 
-You are done with setup. Whenever you want to connect your device to your mac, connect with a cable and run the command:
+You are done with setup. Whenever you want to connect your device to your mac, connect with a cable and run command below. You can remove your USB cable afterwards.
 
 ```bash
 ./wcon.sh
