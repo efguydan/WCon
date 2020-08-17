@@ -28,6 +28,25 @@ You are done with setup. Whenever you want to connect your device to your mac, c
 ./wcon.sh
 ```
 
+## Frequently Asked Questions
+<details>
+  <summary>Do I need a USB cable before I can use this tool?</summary>
+  
+  Yes, a USB cable will needed to connect your android device to your laptop. Although it can be removed as soon as wCon is done connecting your device.
+</details>
+
+<details>
+  <summary>Can I access Wcon outside of the folder it is downloaded in?</summary>
+  
+  No
+</details>
+
+<details>
+  <summary>Do I need to add Wcon to my .gitignore file?</summary>
+  
+  No, It isn't necessary to add wCon to the .gitignore file. However, to avoid pushing unnecessary files to your repository, it is advisable.
+</details>
+
 ## License
 ```text
 Copyright 2020 Efe Ejemudaro
